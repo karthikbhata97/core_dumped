@@ -1,0 +1,12 @@
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 100px;
+}
+input {
+  display: inline-block;
+}
+#addrecord {
+  width: 100px
+}

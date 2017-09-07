@@ -1,0 +1,24 @@
+<div>
+<div class="well">
+  <form ng-submit="add_record(newrecord)">
+  USER NAME:<input type="text" ng-model="newrecord.username" />
+  </input>
+  <hr>
+  START DATE:<input type="text" ng-model="newrecord.startdate" />
+  </input>
+  <hr>
+  END DATE:<input type="text" ng-model="newrecord.enddate" />
+  </input>
+<hr>
+  DESCRIPTION:
+  <br><textarea ng-model="newrecord.description"> </textarea>
+
+  <!-- <form ng-submit="importticketform()"> -->
+                      <hr>
+                      FILE:<input type="file" file-model="myFile"  accept=".jpeg" required />
+                      <hr>
+
+<button type="submit" id="add_record">submit</button>
+</form>
+</div>
+</div>
