@@ -9,7 +9,7 @@ var express = require('express'),
     formController = require('./cloud/controllers/formController');
 
 mongoose.Promise = global.Promise;
-mongoose.createConnection('mongodb://localhost:27017/rvcehacks');
+mongoose.connect('mongodb://localhost:27017/rvcehacks');
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 app.use(morgan('dev'));
 app.use('/', express.static(__dirname + '/form/'));
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/form/index.html');
+    res.sendFile(__dirname + '/form/main.html');
 });
 
 app.listen(3000, function() {

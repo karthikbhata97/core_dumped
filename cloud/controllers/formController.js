@@ -1,13 +1,15 @@
 var Form = require('../models/form').forms;
+var path = require('path');
+var fs = require('fs');
 
 module.exports.add = function(req, res) {
-  console.log(req);
+  var record = JSON.parse(req.body.record);
   var tmp_path = req.file.path;
   var new_form = {
-    username: req.body.username,
-    description: req.body.description,
-    fromDate: req.body.startdate,
-    fromDate: req.body.enddate
+    username: record["username"],
+    description: record["description"],
+    timeBegin: record["fromDate"],
+    timeEnd: record["toDate"]
   }
   var form = new Form(new_form);
   form.save(function(err, result) {
@@ -16,7 +18,9 @@ module.exports.add = function(req, res) {
       res.end();
     }
     else {
-      var dst_path = path.resolve(__dirname + '../attachments/' + result.id);
+      var dst_path = path.resolve(__dirname + '/../attachments/' + result._id + '.jpeg');
+      console.log(tmp_path);
+      console.log(dst_path);
       fs.rename(tmp_path, dst_path, function(err) {
         if(err) {
           console.log(err);

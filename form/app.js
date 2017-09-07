@@ -69,21 +69,12 @@ app.factory('FileSizeError', function() {
 });
 
 
-
-
-
-
-
-
-
-
 app.service('uploadAPI', function($http) {
   return {
-    upload: function(file,record) {
+    upload: function(file, record) {
       var formData = new FormData();
       formData.append("file", file);
-      formData.append("record", record);
-      alert(formData);
+      formData.append("record", JSON.stringify(record));
       return $http({
         url: '/addrecord',
         data: formData,
