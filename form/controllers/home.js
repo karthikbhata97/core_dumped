@@ -5,8 +5,7 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
 
   $scope.add_record = function(add_record) {
     $scope.record = add_record;
-    alert(JSON.stringify(add_record));
-    //  $scope.record.filename=FileName.getname();
+    $scope.record.filename=FileName.getname();
     uploadAPI.upload($scope.myFile, $scope.record).then(function(data) {
       if(data.data.success) {
         $scope.newrecord = {}

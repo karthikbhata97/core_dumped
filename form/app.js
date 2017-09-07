@@ -15,8 +15,6 @@ app.config(function($routeProvider) {
   })
 })
 
-
-
 app.directive('fileModel', ['$parse', 'FileSizeError', 'FileName', function ($parse, FileSizeError, FileName) {
   return {
     restrict: 'A',

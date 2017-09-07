@@ -9,7 +9,8 @@ module.exports.add = function(req, res) {
     username: record["username"],
     description: record["description"],
     timeBegin: record["fromDate"],
-    timeEnd: record["toDate"]
+    timeEnd: record["toDate"],
+    filename: record["filename"]
   }
   var form = new Form(new_form);
   form.save(function(err, result) {
@@ -18,7 +19,7 @@ module.exports.add = function(req, res) {
       res.end();
     }
     else {
-      var dst_path = path.resolve(__dirname + '/../attachments/' + result._id + '.jpeg');
+      var dst_path = path.resolve(__dirname + '/../attachments/' + result._id + '.png');
       console.log(tmp_path);
       console.log(dst_path);
       fs.rename(tmp_path, dst_path, function(err) {

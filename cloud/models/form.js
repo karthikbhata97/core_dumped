@@ -24,6 +24,10 @@ var formSchema = new Schema ({
 */
     },
 
+    filename: {
+      type: String
+    }
+
 });
 
 module.exports.forms = mongoose.model('Form', formSchema);
