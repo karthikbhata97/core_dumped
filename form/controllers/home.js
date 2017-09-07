@@ -1,10 +1,16 @@
 var app = angular.module("myApp");
 
 app.controller("homeController", function($scope, $http, $resource, $route , FileName, uploadAPI) {
-  $scope.main = "Home"
 
-  $scope.add_record = function(add_record) {
+    var info=$resource('/fetchdetails');
+    info.query(function(result){
 
+      $scope.feed = result;
+       $scope.path = result.filepath;
+
+    })
+
+    $scope.add_record = function(add_record) {
     $scope.record = add_record;
     console.log($scope.record);
     $scope.record.filename=FileName.getname();
