@@ -29,3 +29,4 @@ app.listen(3000, function() {
 app.post('/login', loginController.login);
 app.post('/addrecord', upload.single('file'), formController.add);
 app.get('/fetchdetails', formController.fetch);
+app.get('/getdata', formController.getdata);

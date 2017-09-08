@@ -14,15 +14,15 @@ module.exports.add = function(req, res) {
     priority : record["priority"],
     filename: record["filename"]
   }
-var ISO_8601_FULL = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i;
-if(!(ISO_8601_FULL.test(new_form.timeBegin))){
-  new_form.timeBegin = new Date();
-  new_form.timeBegin = new_form.timeBegin.toISOString();
-}
-if(!(ISO_8601_FULL.test(new_form.timeEnd))){
-  new_form.timeEnd = new Date();
-  new_form.timeEnd = new_form.timeEnd.toISOString();
-}
+  var ISO_8601_FULL = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i;
+  if(!(ISO_8601_FULL.test(new_form.timeBegin))){
+    new_form.timeBegin = new Date();
+    new_form.timeBegin = new_form.timeBegin.toISOString();
+  }
+  if(!(ISO_8601_FULL.test(new_form.timeEnd))){
+    new_form.timeEnd = new Date();
+    new_form.timeEnd = new_form.timeEnd.toISOString();
+  }
 
   var form = new Form(new_form);
   form.save(function(err, result) {
@@ -48,14 +48,27 @@ if(!(ISO_8601_FULL.test(new_form.timeEnd))){
 }
 
 module.exports.fetch = function(req,res){
-var filepath = __dirname + '/../attachments/';
-Form.find(function(err, result) {
-  if(err){
-    console.log(err);
-    res.end();
-  }
-  else {
+  var filepath = __dirname + '/../attachments/';
+  Form.find(function(err, result) {
+    if(err){
+      console.log(err);
+      res.end();
+    }
+    else {
+      res.send(result);
+    }
+  })
+}
+
+module.exports.getdata = function(req, res) {
+  Form.
+  find({
+    timeBegin: {$lte: new Date()},
+    timeEnd: {$gte: new Date()}
+  }).
+  sort({ priority: -1 }).
+  limit(1).
+  exec(function(err, result) {
     res.send(result);
-  }
-})
+  });
 }

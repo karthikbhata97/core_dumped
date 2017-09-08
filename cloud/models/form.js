@@ -11,17 +11,14 @@ var formSchema = new Schema ({
     },
 
     timeBegin: {
-      type: String
-/*      type : Date,
-      default: Date.now
-*/
+      type : Date,
+      default: new Date()
     },
 
     timeEnd: {
-      type: String
-/*      type : Date,
+      type : Date,
       default: new Date(+new Date() + 1*24*60*60*1000)
-*/
+
     },
 
     priority: {
