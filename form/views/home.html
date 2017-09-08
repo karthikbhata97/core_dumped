@@ -14,7 +14,7 @@
   <br><br><br>
 
   <div class="ctp">
-    <a ui-sref="ctp"><img src="/views/images/4.png" width="80px" height="80px"></a>
+    <a href="" onclick="showDiv()"><img src="/views/images/4.png" width="80px" height="80px"></a>
     <p>Create Trading Partner</p>
   </div>
   <br><br>
@@ -62,13 +62,16 @@ FILE:<input type="file" file-model="myFile"  accept=".jpeg" required ></input>
 </form>
 </div>
 
-<div>
-</hr>
+
+<div id="welcomeDiv"  style="display:none;">
+
+
 <form ng-submit="add_device(device)">
-  DEVICE NAME:<input type="text" ng-model="device.devicename"></input>
+  DEVICE NAME:<input type="text" ng-model="device.deviceName"></input>
   PASSWORD:<input type="password" ng-model="device.password"></input>
   <button type="submit" id="add_device">submit</button>
 </form>
+
 </div>
 
 </div>
