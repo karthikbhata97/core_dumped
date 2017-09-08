@@ -1,4 +1,5 @@
 var Form = require('../models/form').forms;
+var Device = require('../models/device').devices;
 var path = require('path');
 var fs = require('fs');
 var moment = require('moment');
@@ -45,6 +46,25 @@ if(!(ISO_8601_FULL.test(new_form.timeEnd))){
       });
     }
   });
+}
+
+module.exports.adddevice = function(req,res){
+  var new_device = {
+    deviceName: req.body.deviceName,
+    password: req.body.password
+  }
+
+  var device = new Device(new_device);
+  device.save(function(err, result) {
+    if(err) {
+      console.log(err);
+      res.end();
+    }
+    else {
+      res.send({success: true, reason: "Success"});
+    }
+  });
+
 }
 
 module.exports.fetch = function(req,res){

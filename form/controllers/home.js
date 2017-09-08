@@ -22,6 +22,23 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
       else {
         alert("Failed")
       }
-    }, function(err){});
-  }
+     }, function(err){});
+    }
+    $scope.add_device = function(device) {
+      $http({
+           url: '/adddevice',
+           method: 'post',
+           data: device
+         }).then(function(data) {
+           if(data.data.success) {
+             $scope.device = {}
+             alert("success")
+           }
+           else {
+             alert("Failed")
+           }
+         }, function(err){});
+
+
+    }
 })
