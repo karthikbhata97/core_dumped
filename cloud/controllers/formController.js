@@ -81,14 +81,42 @@ module.exports.fetch = function(req,res){
 }
 
 module.exports.getdata = function(req, res) {
-  Form.
-  find({
-    timeBegin: {$lte: new Date()},
-    timeEnd: {$gte: new Date()}
+  authenticate(req.body.devicename, req.body.password, function(status) {
+    if(!status) {
+      res.status(400).send({
+        message: "Invalid credentials"
+      })
+    }
+    else {
+      Form.
+      find({
+        timeBegin: {$lte: new Date()},
+        timeEnd: {$gte: new Date()}
+      }).
+      sort({ priority: -1 }).
+      limit(1).
+      exec(function(err, result) {
+        res.send(result);
+      });
+    }
+  })
+}
+
+var authenticate = function(deviceName, password, callback) {
+  Device.findOne({
+    deviceName: deviceName,
+    password: password
   }).
-  sort({ priority: -1 }).
-  limit(1).
   exec(function(err, result) {
-    res.send(result);
+    if(err) {
+      console.log(err);
+      return callback(false);
+    }
+    if(result) {
+      return callback(true);
+    }
+    else {
+      return callback(false);
+    }
   });
 }

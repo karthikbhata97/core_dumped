@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/rvcehacks');
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 app.use('/', express.static(__dirname + '/form/'));
@@ -30,4 +30,4 @@ app.post('/login', loginController.login);
 app.post('/addrecord', upload.single('file'), formController.add);
 app.post('/adddevice', formController.adddevice);
 app.get('/fetchdetails', formController.fetch);
-app.get('/getdata', formController.getdata);
+app.post('/getdata', formController.getdata);
