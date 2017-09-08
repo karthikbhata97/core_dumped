@@ -11,6 +11,7 @@ module.exports.add = function(req, res) {
     description: record["description"],
     timeBegin: record["fromDate"],
     timeEnd: record["toDate"],
+    priority : record["priority"],
     filename: record["filename"]
   }
 var ISO_8601_FULL = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i;

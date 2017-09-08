@@ -36,23 +36,39 @@
 <a href="/attachments/{{item._id}}.jpeg">kjasdh</a>
 </div>
     <form ng-submit="add_record(newrecord)">
-      USER NAME:<input type="text" ng-model="newrecord.username" />
+      USER NAME:<input type="text" ng-model="newrecord.username" required>
     </input>
     <hr>
-    START DATE:<input type="datetime-local" ng-model="newrecord.fromDate" />
-  </input>
+    START DATE:<input type="datetime-local" ng-model="newrecord.fromDate" required></input>
   <hr>
-  END DATE:<input type="datetime-local" ng-model="newrecord.toDate" />
+  END DATE:<input type="datetime-local" ng-model="newrecord.toDate" required>
 </input>
+<hr>
+PRIORITY:
+<select ng-model="newrecord.priority" required>
+  <option ng-repeat="i in [5,4,3,2,1]" selected  value={{i}} >{{i}}</option>
+
+
+</select>
 <hr>
 DESCRIPTION:
 <br><textarea ng-model="newrecord.description"> </textarea>
 
 <hr>
-FILE:<input type="file" file-model="myFile"  accept=".jpeg" required />
+FILE:<input type="file" file-model="myFile"  accept=".jpeg" required ></input>
 <hr>
 
 <button type="submit" id="add_record">submit</button>
 </form>
 </div>
+
+<div>
+</hr>
+<form ng-submit="add_device(device)">
+  DEVICE NAME:<input type="text" ng-model="device.devicename"></input>
+  PASSWORD:<input type="password" ng-model="device.password"></input>
+  <button type="submit" id="add_device">submit</button>
+</form>
+</div>
+
 </div>

@@ -24,6 +24,11 @@ var formSchema = new Schema ({
 */
     },
 
+    priority: {
+      type: Number
+
+    },
+
     filename: {
       type: String
     }
