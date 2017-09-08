@@ -19,6 +19,7 @@
   "homepage": "https://github.com/karthikbhata97/the-repo#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "canvas": "^1.6.7",
     "express": "^4.15.4",
     "moment": "^2.18.1",
     "mongoose": "^4.11.10",

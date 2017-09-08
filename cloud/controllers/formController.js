@@ -81,6 +81,20 @@ module.exports.fetch = function(req,res){
   })
 }
 
+module.exports.getdevices = function(req,res){
+  Device.find({}).
+  select({deviceName: 1}).
+  exec(function(err, result) {
+    if(err){
+      console.log(err);
+      res.end();
+    }
+    else {
+      res.send(result);
+    }
+  })
+}
+
 module.exports.getdata = function(req, res) {
   authenticate(req.body.devicename, req.body.password, function(status) {
     if(!status) {
@@ -133,5 +147,18 @@ module.exports.deletedata = function(req,res){
         res.send({"success":true});
       }
   });
+}
 
+
+module.exports.deleteDevice = function(req,res){
+  Device.findByIdAndRemove({_id:req.body._id},function(err,result){
+      if(err) {
+        console.log(err);
+        res.end();
+      }
+      else {
+        console.log(result);
+        res.send({"success":true});
+      }
+  });
 }

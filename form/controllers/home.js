@@ -3,12 +3,15 @@ var app = angular.module("myApp");
 app.controller("homeController", function($scope, $http, $resource, $route , FileName, uploadAPI) {
 
     var info=$resource('/fetchdetails');
+    var devices = $resource('/getdevices');
     info.query(function(result){
-
       $scope.feed = result;
        $scope.path = result.filepath;
+     })
 
-    })
+    devices.query(function(result){
+       $scope.devicefeed = result;
+      })
 
     $scope.add_record = function(add_record) {
       $scope.record = add_record;
@@ -60,5 +63,21 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
          }, function(err){});
     }
 
+    $scope.deleteDevice = function(item) {
+      $http({
+           url: '/deleteDevice',
+           method: 'post',
+           data: item
+         }).then(function(data) {
+           if(data.data.success) {
+             $scope.device = {}
+             alert("deleted successfully")
+             location.reload();
+           }
+           else {
+             alert("Failed")
+           }
+         }, function(err){});
+    }
 
 })

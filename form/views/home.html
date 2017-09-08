@@ -5,6 +5,7 @@
 <!-- <div ng-repeat="item in feed">
   <a href="/attachments/{{item._id}}.jpeg">kjasdh</a>
 </div> -->
+<!-- {{devicefeed}} -->
 <style>
             table {
               font-family: arial, sans-serif;
@@ -112,6 +113,18 @@
     <b>PASSWORD:</b><input type="password" ng-model="device.password"></input>&nbsp;&nbsp;&nbsp;&nbsp;<hr>
     <button type="submit" id="add_device">ADD DEVICE</button>
   </form>
+<hr>
+  <table>
+    <tr style="color:white;background-color:gray">
+      <th>Device Name </th>
+      <th>Delete </th>
+    </tr>
+    <tr ng-repeat="item in devicefeed" >
+      <th>{{item.deviceName}}</th>
+      <th><button ng-click="deleteDevice(item)">DELETE</button></th>
+    </tr>
+  </table>
+
 </div>
 
 <div class="centermenu well" id="scheduleView"  style="display:none;">

@@ -32,3 +32,11 @@ app.post('/adddevice', formController.adddevice);
 app.get('/fetchdetails', formController.fetch);
 app.post('/getdata', formController.getdata);
 app.post('/deletedata', formController.deletedata);
+app.get('/getdevices' , formController.getdevices);
+app.post('/deleteDevice', formController.deleteDevice);
+
+
+//
+// var fs = require('fs');
+// var text2png = require('text2png');
+// fs.writeFileSync('out.png', text2png('Hello!\n world', {textColor: 'black'}));
