@@ -5,8 +5,33 @@
 <!-- <div ng-repeat="item in feed">
   <a href="/attachments/{{item._id}}.jpeg">kjasdh</a>
 </div> -->
+<style>
+            table {
+              font-family: arial, sans-serif;
+              font-size: 6;
+              border-collapse: collapse;
+              width: 100%;
+              /*display: block;
+              overflow-x: scroll;*/
+            }
+
+            td {
+              font-size: 10pt;
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+              width:20%;
+
+            }
+            th {
+              font-size: 10pt;
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
 
 
+            }
+            </style>
 <div class="sidemenu">
     <br>
     <div class="logospace">
@@ -65,17 +90,19 @@
 
 <div class="centermenu" id="scheduleView"  style="display:none;">
   <table>
-    <tr>
+    <tr style="color:white;background-color:gray">
       <th>USERNAME</th>
       <th>START TIME</th>
       <th>END TIME</th>
+      <th>PRIORITY</th>
       <th>DESCRIPTION</th>
       <th>IMAGE</th>
     </tr>
-    <tr ng-repeat="item in feed">
+    <tr ng-repeat="item in feed" >
       <th>{{item.username}}</th>
       <th>{{item.timeBegin}}</th>
       <th>{{item.timeEnd}}</th>
+      <th>{{item.priority}}</th>
       <th>{{item.description}}</th>
       <th><a href="/attachments/{{item._id}}.jpeg">link</a></th>
     </tr>
