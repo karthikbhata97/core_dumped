@@ -1,7 +1,37 @@
 <div>
-  <div class="well">
-{{feed}}
-{{path}}
+
+<!-- {{feed}}
+{{path}} -->
+
+
+<div class="sidemenu">
+  <br>
+  <div class="logospace">
+    <br><br>
+    <a href="#"><img src="/views/images/7.png" width="70px" height="70px"></a>
+  </div>
+
+  <br><br><br>
+
+  <div class="ctp">
+    <a ui-sref="ctp"><img src="/views/images/4.png" width="80px" height="80px"></a>
+    <p>Create Trading Partner</p>
+  </div>
+  <br><br>
+  <div class="mtp">
+    <a ui-sref="mtp"><img src="/views/images/1.png" width="80px" height="80px"></a>
+    <p>Manage Trading Partner</p>
+  </div>
+  <br><br>
+  <div class="upload">
+    <a ui-sref="upload"><img src="/views/images/upload.png" width="80px" height="80px"></a>
+    <p>Bulk Partner Upload</p>
+  </div>
+</div>
+
+
+
+<div class="centermenu">
 <div ng-repeat="item in feed">
 <a href="/attachments/{{item._id}}.jpeg">kjasdh</a>
 </div>

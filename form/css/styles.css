@@ -1,0 +1,29 @@
+body{
+
+  background-image: url("/bg.jpg");
+}
+
+.sidemenu{
+  align-self: left;
+  width: 200px;
+  font-family: sans-serif;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-left: -10px;
+  text-align: center;
+  background-color: black;
+    /*background-color: #202020;*/
+  color: grey;
+  height: 150%;
+  border-radius: 20px;
+}
+.centermenu{
+  align-self: middle;
+  width: 450px;
+  font-family: sans-serif;
+  font-size: 12px;
+  margin-top: -500px;
+  margin-left: 300px;
+  text-align: center;
+  height: 100%;
+}
