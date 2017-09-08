@@ -73,29 +73,29 @@
 </div>
 
 
-<div class="centermenu well" id="formView"  style="display:none;">
+<div class="centermenu well" id="formView" >
     <h3><u>Add Notice</u></h3>
     <hr style="color:black">
 
     <form ng-submit="add_record(newrecord)">
         <div class="left-col" >
-        <b>USER NAME:</b><input type="text" ng-model="newrecord.username" required></input>
+        <b>USER NAME:</b>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" ng-model="newrecord.username" style="width:38%" required></input>
         </div>
-      <b>PRIORITY:</b><select ng-model="newrecord.priority" required>
+      <b style="margin-left:-150px">PRIORITY:</b><select ng-model="newrecord.priority" required>
           <option ng-repeat="i in [5,4,3,2,1]" selected  value={{i}} >{{i}}</option>
         </select>
         <hr>
         <div class="left-col" >
-        <b>START DATE:</b><input type="datetime-local" ng-model="newrecord.fromDate" required></input>
+        <b>START DATE:&nbsp;&nbsp;&nbsp;</b><input type="datetime-local" ng-model="newrecord.fromDate" style="width:38%" required></input>
         </div>
-        <b>END DATE:</b><input type="datetime-local" ng-model="newrecord.toDate" required></input>
+        <b>END DATE:&nbsp;</b><input type="datetime-local" ng-model="newrecord.toDate" required></input>
         <hr>
-        <div class="left-col" style="margin-right:130px">
-        <b>DESCRIPTION:</b>
+        <div class="left-col" style="margin-right:150px">
+        <b style="vertical-align:top;">DESCRIPTION:</b>&nbsp;
         <textarea ng-model="newrecord.description"> </textarea>
 
-        </div>
-
+      </div>
+        <span style="float:left;vertical-align:center;"><b>FILE:</b></span>
           <input type="file" file-model="myFile"  accept=".png" required ></input>
       <hr>
       <button type="submit" id="add_record">submit</button>
@@ -124,6 +124,7 @@
       <th>PRIORITY</th>
       <th>DESCRIPTION</th>
       <th>IMAGE</th>
+      <th>DELETE</th>
     </tr>
     <tr ng-repeat="item in feed" >
       <th>{{item.username}}</th>
@@ -132,6 +133,7 @@
       <th>{{item.priority}}</th>
       <th>{{item.description}}</th>
       <th><a href="/attachments/{{item._id}}.jpeg">link</a></th>
+      <th><button ng-click="deleteData(item)">DELETE</button></th>
     </tr>
   </table>
 

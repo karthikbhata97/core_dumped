@@ -1,7 +1,8 @@
-  var Form = require('../models/form').forms;
+var Form = require('../models/form').forms;
 var Device = require('../models/device').devices;
 var path = require('path');
 var fs = require('fs');
+var mongoose = require('mongoose');
 var moment = require('moment');
 
 module.exports.add = function(req, res) {
@@ -119,4 +120,18 @@ var authenticate = function(deviceName, password, callback) {
       return callback(false);
     }
   });
+}
+
+module.exports.deletedata = function(req,res){
+  Form.findByIdAndRemove({_id:req.body._id},function(err,result){
+      if(err) {
+        console.log(err);
+        res.end();
+      }
+      else {
+        console.log(result);
+        res.send({"success":true});
+      }
+  });
+
 }
