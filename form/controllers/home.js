@@ -34,6 +34,7 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
            if(data.data.success) {
              $scope.device = {}
              alert("success")
+             location.reload();
            }
            else {
              alert("Failed")
