@@ -31,3 +31,4 @@ app.post('/addrecord', upload.single('file'), formController.add);
 app.post('/adddevice', formController.adddevice);
 app.get('/fetchdetails', formController.fetch);
 app.post('/getdata', formController.getdata);
+app.post('/deletedata', formController.deletedata);

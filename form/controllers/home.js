@@ -11,19 +11,20 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
     })
 
     $scope.add_record = function(add_record) {
-    $scope.record = add_record;
-    console.log($scope.record);
-    $scope.record.filename=FileName.getname();
-    uploadAPI.upload($scope.myFile, $scope.record).then(function(data) {
-      if(data.data.success) {
-        // $scope.newrecord = {}
-        alert("success")
+      $scope.record = add_record;
+      console.log($scope.record);
+      $scope.record.filename=FileName.getname();
+      uploadAPI.upload($scope.myFile, $scope.record).then(function(data) {
+          if(data.data.success) {
+            // $scope.newrecord = {}
+            alert("success")
+          }
+          else {
+            alert("Failed")
+          }
+        }, function(err){});
       }
-      else {
-        alert("Failed")
-      }
-     }, function(err){});
-    }
+
     $scope.add_device = function(device) {
       $http({
            url: '/adddevice',
@@ -38,7 +39,23 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
              alert("Failed")
            }
          }, function(err){});
-
-
     }
+
+    $scope.deleteData = function(item) {
+      $http({
+           url: '/deletedata',
+           method: 'post',
+           data: item
+         }).then(function(data) {
+           if(data.data.success) {
+             $scope.device = {}
+             alert("deleted successfully")
+           }
+           else {
+             alert("Failed")
+           }
+         }, function(err){});
+    }
+
+
 })
