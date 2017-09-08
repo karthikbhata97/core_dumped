@@ -32,7 +32,7 @@ module.exports.add = function(req, res) {
       res.end();
     }
     else {
-      var dst_path = path.resolve(__dirname + '/../../form/attachments/' + result._id + '.jpeg');
+      var dst_path = path.resolve(__dirname + '/../../form/attachments/' + result._id + '.png');
       console.log(tmp_path);
       console.log(dst_path);
       fs.rename(tmp_path, dst_path, function(err) {
