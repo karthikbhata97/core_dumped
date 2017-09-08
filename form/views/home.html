@@ -15,6 +15,10 @@
               overflow-x: scroll;*/
             }
 
+            hr {
+              color:black;
+            }
+
             td {
               font-size: 10pt;
               border: 1px solid #dddddd;
@@ -30,6 +34,18 @@
               padding: 8px;
 
 
+            }
+            .left-col {
+              float: left;
+              width:45%;
+            }
+            .center-col {
+              float: left;
+              width: 35%;
+            }
+            .right-col {
+              float: left;
+              width: 25%;
             }
             </style>
 <div class="sidemenu">
@@ -57,38 +73,49 @@
 </div>
 
 
+<div class="centermenu well" id="formView"  style="display:none;">
+    <h3><u>Add Notice</u></h3>
+    <hr style="color:black">
 
-<div class="centermenu" id="formView"  style="display:none;">
     <form ng-submit="add_record(newrecord)">
-        USER NAME:<input type="text" ng-model="newrecord.username" required></input>
-        <hr>
-        START DATE:<input type="datetime-local" ng-model="newrecord.fromDate" required></input>
-        <hr>
-        END DATE:<input type="datetime-local" ng-model="newrecord.toDate" required></input>
-        <hr>
-        PRIORITY:<select ng-model="newrecord.priority" required>
+        <div class="left-col" >
+        <b>USER NAME:</b><input type="text" ng-model="newrecord.username" required></input>
+        </div>
+      <b>PRIORITY:</b><select ng-model="newrecord.priority" required>
           <option ng-repeat="i in [5,4,3,2,1]" selected  value={{i}} >{{i}}</option>
         </select>
         <hr>
-        DESCRIPTION:
-        <br><textarea ng-model="newrecord.description"> </textarea>
+        <div class="left-col" >
+        <b>START DATE:</b><input type="datetime-local" ng-model="newrecord.fromDate" required></input>
+        </div>
+        <b>END DATE:</b><input type="datetime-local" ng-model="newrecord.toDate" required></input>
         <hr>
-        FILE:<input type="file" file-model="myFile"  accept=".jpeg" required ></input>
-        <hr>
-        <button type="submit" id="add_record">submit</button>
+        <div class="left-col" style="margin-right:130px">
+        <b>DESCRIPTION:</b>
+        <textarea ng-model="newrecord.description"> </textarea>
+
+        </div>
+
+          <input type="file" file-model="myFile"  accept=".png" required ></input>
+      <hr>
+      <button type="submit" id="add_record">submit</button>
       </form>
 </div>
 
 
-<div class="centermenu" id="deviceView"  style="display:none;">
+<div class="centermenu well" id="deviceView"  style="display:none;">
+<h3><u>Register Device</u></h3>
+  <hr>
   <form ng-submit="add_device(device)">
-    DEVICE NAME:<input type="text" ng-model="device.deviceName"></input>
-    PASSWORD:<input type="password" ng-model="device.password"></input>
-    <button type="submit" id="add_device">submit</button>
+    <b>DEVICE NAME:</b><input type="text" ng-model="device.deviceName"></input> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>PASSWORD:</b><input type="password" ng-model="device.password"></input>&nbsp;&nbsp;&nbsp;&nbsp;<hr>
+    <button type="submit" id="add_device">ADD DEVICE</button>
   </form>
 </div>
 
-<div class="centermenu" id="scheduleView"  style="display:none;">
+<div class="centermenu well" id="scheduleView"  style="display:none;">
+  <h3><u>Schedules</u></h3>
+<hr>
   <table>
     <tr style="color:white;background-color:gray">
       <th>USERNAME</th>
