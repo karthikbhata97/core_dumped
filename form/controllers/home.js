@@ -18,6 +18,7 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
           if(data.data.success) {
             // $scope.newrecord = {}
             alert("success")
+            location.reload();
           }
           else {
             alert("Failed")
@@ -51,6 +52,7 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
            if(data.data.success) {
              $scope.device = {}
              alert("deleted successfully")
+             location.reload();
            }
            else {
              alert("Failed")
