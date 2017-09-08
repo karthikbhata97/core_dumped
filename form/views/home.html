@@ -1,77 +1,114 @@
 <div>
-
+<!-- {{feed}} -->
 <!-- {{feed}}
 {{path}} -->
+<!-- <div ng-repeat="item in feed">
+  <a href="/attachments/{{item._id}}.jpeg">kjasdh</a>
+</div> -->
+<style>
+            table {
+              font-family: arial, sans-serif;
+              font-size: 6;
+              border-collapse: collapse;
+              width: 100%;
+              /*display: block;
+              overflow-x: scroll;*/
+            }
+
+            td {
+              font-size: 10pt;
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+              width:20%;
+
+            }
+            th {
+              font-size: 10pt;
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
 
 
+            }
+            </style>
 <div class="sidemenu">
-  <br>
-  <div class="logospace">
+    <br>
+    <div class="logospace">
     <br><br>
     <a href="#"><img src="/views/images/7.png" width="70px" height="70px"></a>
-  </div>
+    </div>
+    <br><br><br>
 
-  <br><br><br>
-
-  <div class="ctp">
-    <a href="" onclick="showDiv()"><img src="/views/images/4.png" width="80px" height="80px"></a>
-    <p>Create Trading Partner</p>
-  </div>
-  <br><br>
-  <div class="mtp">
-    <a ui-sref="mtp"><img src="/views/images/1.png" width="80px" height="80px"></a>
-    <p>Manage Trading Partner</p>
-  </div>
-  <br><br>
-  <div class="upload">
-    <a ui-sref="upload"><img src="/views/images/upload.png" width="80px" height="80px"></a>
-    <p>Bulk Partner Upload</p>
-  </div>
+    <div class="ctp">
+      <a href="" onclick="showDiv('formView')"><img src="/views/images/4.png" width="80px" height="80px"></a>
+      <p>Add Notice</p>
+    </div>
+    <br><br>
+    <div class="mtp">
+      <a href="" onclick="showDiv('scheduleView')"><img src="/views/images/1.png" width="80px" height="80px"></a>
+      <p>View Schedule</p>
+    </div>
+    <br><br>
+    <div class="upload">
+      <a href="" onclick="showDiv('deviceView')"><img src="/views/images/upload.png" width="80px" height="80px"></a>
+      <p>Add Device</p>
+    </div>
 </div>
 
 
 
-<div class="centermenu">
-<div ng-repeat="item in feed">
-<a href="/attachments/{{item._id}}.jpeg">kjasdh</a>
-</div>
+<div class="centermenu" id="formView"  style="display:none;">
     <form ng-submit="add_record(newrecord)">
-      USER NAME:<input type="text" ng-model="newrecord.username" required>
-    </input>
-    <hr>
-    START DATE:<input type="datetime-local" ng-model="newrecord.fromDate" required></input>
-  <hr>
-  END DATE:<input type="datetime-local" ng-model="newrecord.toDate" required>
-</input>
-<hr>
-PRIORITY:
-<select ng-model="newrecord.priority" required>
-  <option ng-repeat="i in [5,4,3,2,1]" selected  value={{i}} >{{i}}</option>
-
-
-</select>
-<hr>
-DESCRIPTION:
-<br><textarea ng-model="newrecord.description"> </textarea>
-
-<hr>
-FILE:<input type="file" file-model="myFile"  accept=".jpeg" required ></input>
-<hr>
-
-<button type="submit" id="add_record">submit</button>
-</form>
+        USER NAME:<input type="text" ng-model="newrecord.username" required></input>
+        <hr>
+        START DATE:<input type="datetime-local" ng-model="newrecord.fromDate" required></input>
+        <hr>
+        END DATE:<input type="datetime-local" ng-model="newrecord.toDate" required></input>
+        <hr>
+        PRIORITY:<select ng-model="newrecord.priority" required>
+          <option ng-repeat="i in [5,4,3,2,1]" selected  value={{i}} >{{i}}</option>
+        </select>
+        <hr>
+        DESCRIPTION:
+        <br><textarea ng-model="newrecord.description"> </textarea>
+        <hr>
+        FILE:<input type="file" file-model="myFile"  accept=".jpeg" required ></input>
+        <hr>
+        <button type="submit" id="add_record">submit</button>
+      </form>
 </div>
 
 
-<div id="welcomeDiv"  style="display:none;">
+<div class="centermenu" id="deviceView"  style="display:none;">
+  <form ng-submit="add_device(device)">
+    DEVICE NAME:<input type="text" ng-model="device.deviceName"></input>
+    PASSWORD:<input type="password" ng-model="device.password"></input>
+    <button type="submit" id="add_device">submit</button>
+  </form>
+</div>
 
-
-<form ng-submit="add_device(device)">
-  DEVICE NAME:<input type="text" ng-model="device.deviceName"></input>
-  PASSWORD:<input type="password" ng-model="device.password"></input>
-  <button type="submit" id="add_device">submit</button>
-</form>
+<div class="centermenu" id="scheduleView"  style="display:none;">
+  <table>
+    <tr style="color:white;background-color:gray">
+      <th>USERNAME</th>
+      <th>START TIME</th>
+      <th>END TIME</th>
+      <th>PRIORITY</th>
+      <th>DESCRIPTION</th>
+      <th>IMAGE</th>
+    </tr>
+    <tr ng-repeat="item in feed" >
+      <th>{{item.username}}</th>
+      <th>{{item.timeBegin}}</th>
+      <th>{{item.timeEnd}}</th>
+      <th>{{item.priority}}</th>
+      <th>{{item.description}}</th>
+      <th><a href="/attachments/{{item._id}}.jpeg">link</a></th>
+    </tr>
+  </table>
 
 </div>
+
 
 </div>

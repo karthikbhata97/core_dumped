@@ -29,10 +29,21 @@
 
       <div ng-view="">
         <script>
-        function showDiv() {
-            document.getElementById('welcomeDiv').style.display = "block";
+        function showDiv(id) {
+            var x = document.getElementById(id);
+            if(id!='formView'){
+              document.getElementById('formView').style.display = 'none';
             }
+            if(id!='deviceView'){
+              document.getElementById('deviceView').style.display = 'none';
+            }
+            if(id!='schelduleView'){
+              document.getElementById('scheduleView').style.display = 'none';
+            }
+            x.style.display = 'block';
+          }
         </script>
+        
       </div>
     </div>
   </body>
