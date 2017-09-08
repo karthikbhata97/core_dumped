@@ -26,6 +26,10 @@ var formSchema = new Schema ({
 
     },
 
+    devices : [{
+      type :String
+    }],
+
     filename: {
       type: String
     }

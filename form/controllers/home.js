@@ -30,6 +30,7 @@ app.controller("homeController", function($scope, $http, $resource, $route , Fil
       }
 
     $scope.add_device = function(device) {
+    //  alert(JSON.stringify(device))
       $http({
            url: '/adddevice',
            method: 'post',

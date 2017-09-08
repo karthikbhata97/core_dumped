@@ -76,6 +76,7 @@
 
 
 <div class="centermenu well" id="formView" >
+  
     <h3><u>Add Notice</u></h3>
     <hr style="color:black">
 
@@ -99,7 +100,15 @@
       </div>
         <span style="float:left;vertical-align:center;"><b>FILE:</b></span>
           <input type="file" file-model="myFile"  accept=".png" required ></input>
-      <hr>
+          <hr>
+          <div class="left-col">
+          <b style="margin-right:25px;margin-left:-90px;vertical-align:top;">  DEVICE:</b>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select ng-model="newrecord.devicename" multiple>
+              <option ng-repeat="item in devicefeed" value="{{item.deviceName}}">{{item.deviceName}}</option>
+            </select>
+          </div>
+
+      <hr><hr><hr><hr>
       <button type="submit" id="add_record">submit</button>
       </form>
 </div>

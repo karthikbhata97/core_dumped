@@ -6,7 +6,9 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 
 module.exports.add = function(req, res) {
+
   var record = JSON.parse(req.body.record);
+  console.log(record.devicename);
   var tmp_path = req.file.path;
   var new_form = {
     username: record["username"],
@@ -14,6 +16,7 @@ module.exports.add = function(req, res) {
     timeBegin: record["fromDate"],
     timeEnd: record["toDate"],
     priority : record["priority"],
+    devices : record["devicename"],
     filename: record["filename"]
   }
   var ISO_8601_FULL = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i;
@@ -106,7 +109,8 @@ module.exports.getdata = function(req, res) {
       Form.
       find({
         timeBegin: {$lte: new Date()},
-        timeEnd: {$gte: new Date()}
+        timeEnd: {$gte: new Date()},
+        devices: {$in: [req.body.devicename]}
       }).
       sort({ priority: -1 }).
       limit(1).
