@@ -32,7 +32,11 @@ var formSchema = new Schema ({
 
     filename: {
       type: String
-    }
+    },
+
+    words: [{
+      type: String
+    }]
 
 });
 

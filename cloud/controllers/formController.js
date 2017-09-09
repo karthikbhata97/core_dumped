@@ -4,6 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var moment = require('moment');
+var request = require('request');
 
 module.exports.add = function(req, res) {
 
@@ -46,6 +47,48 @@ module.exports.add = function(req, res) {
         }
         else {
           res.send({success: true, reason: "Success"});
+          console.log("Happens");
+          var data = {
+            "requests": [
+              {
+                "image": {
+                  "content": new Buffer(fs.readFileSync(dst_path)).toString("base64")
+                },
+                "features": [
+                  {
+                    "type": "TEXT_DETECTION"
+                  }
+                ]
+              }
+            ]
+          }
+          request.post(
+            'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAmPP-Jzyti3JZo1Emtx_mRIVVzsC6hHt4',
+            { json: data },
+            function (error, response, body) {
+              console.log("request made");
+              if (!error && response.statusCode == 200) {
+                var words = []
+                var annot = body.responses[0].textAnnotations;
+                for (var i=1;i<annot.length;i++) {
+                  if(annot[i].description.length>4)
+                    words.push(annot[i].description);
+                  if(i==annot.length-1) {
+                    console.log(words);
+                    Form.update({_id:result._id}, {$set: {words: words}}, function(err, result) {
+                      if(err) {
+                        console.log("Failed to add matches");
+                        console.log(err);
+                      }
+                      else {
+                        console.log("Success");
+                      }
+                    })
+                  }
+                }
+              }
+            }
+          );
         }
       });
     }
@@ -142,27 +185,27 @@ var authenticate = function(deviceName, password, callback) {
 
 module.exports.deletedata = function(req,res){
   Form.findByIdAndRemove({_id:req.body._id},function(err,result){
-      if(err) {
-        console.log(err);
-        res.end();
-      }
-      else {
-        console.log(result);
-        res.send({"success":true});
-      }
+    if(err) {
+      console.log(err);
+      res.end();
+    }
+    else {
+      console.log(result);
+      res.send({"success":true});
+    }
   });
 }
 
 
 module.exports.deleteDevice = function(req,res){
   Device.findByIdAndRemove({_id:req.body._id},function(err,result){
-      if(err) {
-        console.log(err);
-        res.end();
-      }
-      else {
-        console.log(result);
-        res.send({"success":true});
-      }
+    if(err) {
+      console.log(err);
+      res.end();
+    }
+    else {
+      console.log(result);
+      res.send({"success":true});
+    }
   });
 }
