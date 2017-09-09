@@ -73,7 +73,7 @@ module.exports.add = function(req, res) {
                 var annot = body.responses[0].textAnnotations;
                 for (var i=1;i<annot.length;i++) {
                   if(annot[i].description.length>4)
-                  words.push(annot[i].description);
+                  words.push(annot[i].description.toLowerCase());
                   if(i==annot.length-1) {
                     console.log(words);
                     Form.update({_id:result._id}, {$set: {words: words}}, function(err, result) {
