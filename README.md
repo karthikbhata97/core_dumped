@@ -13,19 +13,19 @@ Dynamic customizable notice board based on priority and time scheduling where if
 
 ## Steps to deploy
 *clone the repo*
-'''
+```
 cd core_dumped
-'''
+```
 
 **Cloud**
-'''
+```
 node server.js                                                # port 8080
-'''
+```
 
 **Raspberry Pi**
-'''
+```
 python2.7 rpi/client.py
-'''
+```
 
 **Admin portal**
 * Open the specified ip of aws
