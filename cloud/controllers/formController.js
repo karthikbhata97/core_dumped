@@ -5,6 +5,7 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 var moment = require('moment');
 var request = require('request');
+var url = require('url');
 
 module.exports.add = function(req, res) {
 
@@ -72,7 +73,7 @@ module.exports.add = function(req, res) {
                 var annot = body.responses[0].textAnnotations;
                 for (var i=1;i<annot.length;i++) {
                   if(annot[i].description.length>4)
-                    words.push(annot[i].description);
+                  words.push(annot[i].description);
                   if(i==annot.length-1) {
                     console.log(words);
                     Form.update({_id:result._id}, {$set: {words: words}}, function(err, result) {
@@ -207,5 +208,14 @@ module.exports.deleteDevice = function(req,res){
       console.log(result);
       res.send({"success":true});
     }
+  });
+}
+
+module.exports.events = function(req, res) {
+  var queryData = url.parse(req.url, true).query;
+  var list = queryData.q.split('-');
+  Form.find({words: {$in: list}}, function(err, form){
+    console.log(err, form);
+    res.send(form)
   });
 }

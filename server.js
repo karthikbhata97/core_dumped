@@ -35,6 +35,7 @@ app.post('/getdata', formController.getdata);
 app.post('/deletedata', formController.deletedata);
 app.get('/getdevices' , formController.getdevices);
 app.post('/deleteDevice', formController.deleteDevice);
+app.get('/getevents', formController.events);
 
 
 //
