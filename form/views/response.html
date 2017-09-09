@@ -1,0 +1,66 @@
+<div>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              font-size: 6;
+              border-collapse: collapse;
+              width: 100%;
+              /*display: block;
+              overflow-x: scroll;*/
+            }
+
+            hr {
+              color:black;
+            }
+
+            td {
+              font-size: 10pt;
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+              width:20%;
+
+            }
+            th {
+              font-size: 10pt;
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+
+
+            }
+            .left-col {
+              float: left;
+              width:45%;
+            }
+            .center-col {
+              float: left;
+              width: 35%;
+            }
+            .right-col {
+              float: left;
+              width: 25%;
+            }
+            </style>
+
+            <table>
+              <tr style="color:white;background-color:gray">
+                <th>USERNAME</th>
+                <th>START TIME</th>
+                <th>END TIME</th>
+                <th>PRIORITY</th>
+                <th>DESCRIPTION</th>
+                <th>IMAGE</th>
+              </tr>
+              <tr ng-repeat="item in feed">
+                <th>{{item.username}}</th>
+                <th>{{item.timeBegin}}</th>
+                <th>{{item.timeEnd}}</th>
+                <th>{{item.priority}}</th>
+                <th>{{item.description}}</th>
+                <th><a href="/attachments/{{item._id}}.png">link</a></th>
+              </tr>
+            </table>
+
+
+</div>

@@ -1,14 +1,40 @@
-<div>
+<style>
+.login_div
+{
+	margin: auto;
+	position: absolute;
+ 	top: 0; left: 0; bottom: 0; right: 0;
+	width: 800px;
+	background-color:   #bbbbbb ;
+	color: black;
+	border-radius: 15px;
+	padding: 30px;
+	text-align:center;
+	height: 400px;
+}
+.inner
+{
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 10px;
+	width: 400px;
+	padding: 10px;
+}
+</style>
+<div class = "login_div">
   <br />
-  <h3>
+  <h1 style = "width = 100%; text-align: center;border-bottom: 1px solid black; padding-bottom: 20px" >
     {{main}}
-  </h3>
-  <form ng-submit="login()">
+  </h1>
+  <form ng-submit="login() " >
     <br />
-    <input type="text" ng-model="username" />
-    <br />
-    <input type="password" ng-model="password" />
-    <br />
-    <button type="submit">Login</button>
+    <b style=" font-size: 18px">USERNAME:</b>
+    <input type="text" ng-model="username" class = "inner"/>
+    <br /><br />
+    <b style=" font-size: 18px">PASSWORD:</b>
+    <input type="password" ng-model="password" class = "inner"/>
+    <br /><br /><br />
+    <button type="submit" style="padding: 5px; color: black">Login</button>
   </form>
 </div>
+

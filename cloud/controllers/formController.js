@@ -216,6 +216,35 @@ module.exports.events = function(req, res) {
   var list = queryData.q.split('-');
   Form.find({words: {$in: list}}, function(err, form){
     console.log(err, form);
-    res.send(form)
+    // res.send(form)
+    genhtml(form, function(r) {
+      res.send(r);
+    })
   });
+}
+
+var genhtml = function(form, callback) {
+  var r = '<html><body>\
+    <table>\
+    <tr style="color:white;background-color:gray">\
+      <th>USERNAME</th>\
+      <th>START TIME</th>\
+      <th>END TIME</th>\
+      <th>PRIORITY</th>\
+      <th>DESCRIPTION</th>\
+      <th>IMAGE</th>\
+    </tr>\
+    <tr>\
+    '
+  for(var i=0;i<form.length;i++)
+  {
+    r += '<th>' + form[i].username + '</th>'
+    r += '<th>' + form[i].timeBegin + '</th>'
+    r += '<th>' + form[i].timeEnd + '</th>'
+    r += '<th>' + form[i].priority + '</th>'
+    r += '<th>' + form[i].description + '</th>'
+    r += '<th><a href="/attachments/' + form[i]._id + '.png">link</a></th>'
+  }
+  r += '</tr></table></body></html>'
+  return callback(r);
 }

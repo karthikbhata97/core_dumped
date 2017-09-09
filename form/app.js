@@ -88,6 +88,6 @@ app.service('uploadAPI', function($http) {
 
 app.controller('mainController', function($scope) {
   $scope.main = "Smart Notice Board";
-  
+
 
 })
