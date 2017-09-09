@@ -4,7 +4,7 @@ import numpy as np
 import datetime as dt
 import requests, sys, json, urllib
 
-server = 'http://127.0.0.1:8080'
+server = 'http://13.58.17.190'
 headers = {'Content-Type': 'application/json'}
 payload = {'devicename': 'admin', 'password': 'admin'}
 print 'begin'
@@ -39,7 +39,7 @@ def save(img_id):
 #img = cv2.imread('test_img.jpg')
 current_id = -1
 cv2.namedWindow("window", cv2.WND_PROP_FULLSCREEN)
-cv2.setWindowProperty("window",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
+cv2.setWindowProperty("window",cv2.WND_PROP_FULLSCREEN,cv2.cv.CV_WINDOW_FULLSCREEN)
 # cv2.cv.CV_WINDOW_FULLSCREEN
 print 'loop begin'
 while(True):

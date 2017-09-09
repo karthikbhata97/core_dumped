@@ -234,17 +234,18 @@ var genhtml = function(form, callback) {
       <th>DESCRIPTION</th>\
       <th>IMAGE</th>\
     </tr>\
-    <tr>\
     '
   for(var i=0;i<form.length;i++)
   {
+    r += '<tr>'
     r += '<th>' + form[i].username + '</th>'
     r += '<th>' + form[i].timeBegin + '</th>'
     r += '<th>' + form[i].timeEnd + '</th>'
     r += '<th>' + form[i].priority + '</th>'
     r += '<th>' + form[i].description + '</th>'
     r += '<th><a href="/attachments/' + form[i]._id + '.png">link</a></th>'
+    r += '</tr>'
   }
-  r += '</tr></table></body></html>'
+  r += '</table></body></html>'
   return callback(r);
 }
