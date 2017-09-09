@@ -1,4 +1,4 @@
-#smart notice board
+# smart notice board
 
 Dynamic customizable notice board based on priority and time scheduling where if any event is to occur the data can be fed prior and the same gets digitally displayed on time.Basically the product automates the entire system i,e display of notices
 
