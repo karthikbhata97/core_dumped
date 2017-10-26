@@ -152,18 +152,37 @@ module.exports.getdata = function(req, res) {
     else {
       Form.
       find({
-        timeBegin: {$lte: new Date()},
-        timeEnd: {$gte: new Date()},
+        // timeBegin: {$lte: new Date()},
+        // timeEnd: {$gte: new Date()},
         devices: {$in: [req.body.devicename]}
       }).
       sort({ priority: -1 }).
-      limit(1).
       exec(function(err, result) {
         res.send(result);
-      });
-    }
+        for(var i=0;i<result.length;i++){
+
+
+         result[i].devices.splice((result[i].devices.indexOf(req.body.devicename)),1);
+          Form.findByIdAndUpdate(result[i]._id,{$set: { devices:result[i].devices}}, function(err, result){
+                  if(err){
+                      console.log(err);
+                    }
+                  console.log("RESULT: " + result);
+              });
+
+        if(!(result[i].devices.length))
+        {
+          Form.findByIdAndRemove({_id:result[i]._id},function(err,result){
+                  if(err) console.log(err);
+                  else console.log("success");
+        })
+        }
+      }
+    })
+  }
   })
 }
+
 
 var authenticate = function(deviceName, password, callback) {
   Device.findOne({
