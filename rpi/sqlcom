@@ -1,0 +1,1 @@
+create table smartboard (id varchar(50), username varchar(50), description varchar(100), timeBegin datetime, timeEnd datetime, priority int, words varchar(1000), filename varchar(50))
